@@ -19,8 +19,7 @@ import { BlendFunction } from "postprocessing";
 import { FloatingGrid } from './components/FloatingGrid';
 function App() {
   return (
-    <Suspense fallback={null}>
-      <Canvas shadows>
+      <>
       <OrbitControls enableZoom={false} target={[0, .35, 0]} maxPolarAngle={Math.PI/2}/>
         <PerspectiveCamera makeDefault position={[3, 2, 5]} fov={90} />
         <CubeCamera resolution={256} frames={Infinity}>
@@ -71,8 +70,8 @@ function App() {
         />
       </EffectComposer>
         <Boxes  />
-      </Canvas>
-    </Suspense>
+      </>
+  
   );
 }
 

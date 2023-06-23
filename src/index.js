@@ -1,12 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { Suspense } from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Html, useProgress } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber';
+
+function Loader() {
+  const { progress } = useProgress();
+  return (
+    <Html center className="loader">
+      <div className="loader-circle"></div>
+    </Html>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Canvas shadows>
+      <Suspense fallback={<Loader />}>
+        <App />
+      </Suspense>
+    </Canvas>
   </React.StrictMode>
 );
 
